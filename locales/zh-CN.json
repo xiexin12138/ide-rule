@@ -1,0 +1,67 @@
+{
+  "promptIde": "选择目标 IDE",
+  "promptIdeCustom": { "message": "输入自定义 IDE 名称（例如 aicode）" },
+  "promptCategory": {
+    "frontend": "选择前端框架（可多选）",
+    "backend": "选择后端框架（可多选）",
+    "language": "选择语言（可多选）"
+  },
+  "promptRequireSelection": {
+    "frontend": "请至少选择一项前端框架，或选择“无”跳过。",
+    "backend": "请至少选择一项后端框架，或选择“无”跳过。",
+    "language": "请至少选择一种语言，或选择“无”跳过。"
+  },
+  "promptCustomNames": {
+    "frontend": "输入自定义前端名称（逗号分隔）",
+    "backend": "输入自定义后端名称（逗号分隔）",
+    "language": "输入自定义语言名称（逗号分隔）"
+  },
+  "promptUseDetectedLang": "检测到系统语言，是否使用",
+  "promptForce": "覆盖已有文件（会先生成备份）？",
+  "cancelled": "操作已取消",
+  "choices": {
+    "cursor": "Cursor",
+    "trae": "TRAE",
+    "vscode": "VS Code",
+    "custom": "自定义",
+    "none": "无"
+  },
+  "hintMulti": "空格选择，回车确认",
+  "yes": "是",
+  "no": "否",
+  "categories": {
+    "frontend": "前端规则",
+    "backend": "后端规则",
+    "language": "语言规则"
+  },
+  "tips": {
+    "frontend": "对齐组件规范、状态管理和构建链路；必要时补充 lint/format。",
+    "backend": "明确接口、错误处理与安全策略；补充测试与监控约定。",
+    "language": "落地该语言的编码/格式/依赖管理规则，并记录决策。"
+  },
+  "checklist": {
+    "frontend": [
+      "统一 lint/format 配置与 CI",
+      "记录架构决策到 project_memory.md",
+      "补充关键路径测试"
+    ],
+    "backend": [
+      "定义接口契约与错误码",
+      "记录安全/审计要求",
+      "补充集成测试或契约测试"
+    ],
+    "language": [
+      "锁定依赖与工具链版本",
+      "记录风格指南与例外",
+      "补充基础测试样例"
+    ]
+  },
+  "summaryWritten": "已写入",
+  "summarySkipped": "跳过（已存在）",
+  "summaryBackups": "备份",
+  "summaryTarget": "规则目录",
+  "summaryMemoryWritten": "项目记忆已初始化",
+  "summaryMemorySkipped": "项目记忆已存在，已跳过",
+  "summaryMemoryBackup": "项目记忆备份"
+}
+
