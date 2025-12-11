@@ -1,0 +1,67 @@
+{
+  "promptIde": "Select target IDE",
+  "promptIdeCustom": { "message": "Enter custom IDE name (e.g. aicode)" },
+  "promptCategory": {
+    "frontend": "Select frontend frameworks (multi-select)",
+    "backend": "Select backend frameworks (multi-select)",
+    "language": "Select languages (multi-select)"
+  },
+  "promptRequireSelection": {
+    "frontend": "Please select at least one frontend item or choose none.",
+    "backend": "Please select at least one backend item or choose none.",
+    "language": "Please select at least one language or choose none."
+  },
+  "promptCustomNames": {
+    "frontend": "Enter custom frontend names (comma separated)",
+    "backend": "Enter custom backend names (comma separated)",
+    "language": "Enter custom language names (comma separated)"
+  },
+  "promptUseDetectedLang": "Detected system language, use it?",
+  "promptForce": "Overwrite existing files (backup will be created)?",
+  "cancelled": "Cancelled",
+  "choices": {
+    "cursor": "Cursor",
+    "trae": "TRAE",
+    "vscode": "VS Code",
+    "custom": "Custom",
+    "none": "None"
+  },
+  "hintMulti": "Space to select, Enter to confirm",
+  "yes": "yes",
+  "no": "no",
+  "categories": {
+    "frontend": "Frontend guideline",
+    "backend": "Backend guideline",
+    "language": "Language guideline"
+  },
+  "tips": {
+    "frontend": "Align components, state, and build chain; add lint/format as needed.",
+    "backend": "Define APIs, errors, and security posture; add tests and monitoring.",
+    "language": "Capture language-specific style, dependency, and tooling decisions."
+  },
+  "checklist": {
+    "frontend": [
+      "Unify lint/format and CI",
+      "Record decisions in project_memory.md",
+      "Add tests for critical paths"
+    ],
+    "backend": [
+      "Define API contracts and error codes",
+      "Record security/audit requirements",
+      "Add integration or contract tests"
+    ],
+    "language": [
+      "Pin dependencies/toolchain versions",
+      "Record style guides and exceptions",
+      "Add sample tests"
+    ]
+  },
+  "summaryWritten": "Written",
+  "summarySkipped": "Skipped (exists)",
+  "summaryBackups": "Backups",
+  "summaryTarget": "Rule directory",
+  "summaryMemoryWritten": "Project memory initialized",
+  "summaryMemorySkipped": "Project memory exists, skipped",
+  "summaryMemoryBackup": "Project memory backup"
+}
+

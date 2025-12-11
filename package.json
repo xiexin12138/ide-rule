@@ -1,0 +1,38 @@
+{
+  "name": "ide-rule",
+  "version": "1.0.1",
+  "description": "CLI to scaffold IDE rule templates (Cursor/TRAE/VSCode/custom) with multi-language support.",
+  "main": "src/index.js",
+  "bin": {
+    "ide-rule": "bin/cli.js"
+  },
+  "scripts": {
+    "start": "node bin/cli.js",
+    "test": "echo \"No automated tests yet\""
+  },
+  "keywords": [
+    "cursor",
+    "rules",
+    "ide",
+    "scaffold",
+    "cli"
+  ],
+  "files": [
+    "bin/",
+    "src/",
+    "templates/base_example.mdc",
+    "templates/project_memory_example.md",
+    "locales/",
+    "types/",
+    "README.md"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "os-locale": "^5.0.0",
+    "prompts": "^2.4.2"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
