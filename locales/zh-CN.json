@@ -7,9 +7,9 @@
     "language": "选择语言（可多选）"
   },
   "promptRequireSelection": {
-    "frontend": "请至少选择一项前端框架，或选择“无”跳过。",
-    "backend": "请至少选择一项后端框架，或选择“无”跳过。",
-    "language": "请至少选择一种语言，或选择“无”跳过。"
+    "frontend": "请至少选择一项前端框架，或选择"无"跳过。",
+    "backend": "请至少选择一项后端框架，或选择"无"跳过。",
+    "language": "请至少选择一种语言，或选择"无"跳过。"
   },
   "promptCustomNames": {
     "frontend": "输入自定义前端名称（逗号分隔）",
@@ -20,9 +20,13 @@
   "promptForce": "覆盖已有文件（会先生成备份）？",
   "cancelled": "操作已取消",
   "choices": {
-    "cursor": "Cursor",
-    "trae": "TRAE",
-    "vscode": "VS Code",
+    "cursor": "Cursor (.mdc)",
+    "trae": "Trae 字节跳动 (.md)",
+    "windsurf": "Windsurf Codeium (.windsurfrules)",
+    "copilot": "GitHub Copilot (.md)",
+    "lingma": "通义灵码 (.md)",
+    "codebuddy": "CodeBuddy 腾讯 (.md)",
+    "vscode": "VS Code 通用 (.md)",
     "custom": "自定义",
     "none": "无"
   },
@@ -64,4 +68,3 @@
   "summaryMemorySkipped": "项目记忆已存在，已跳过",
   "summaryMemoryBackup": "项目记忆备份"
 }
-

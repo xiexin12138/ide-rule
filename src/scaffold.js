@@ -1,25 +1,24 @@
-// Reason: Decoupled scaffold logic for generating rule files.
+// Reason: Decoupled scaffold logic for generating rule files with multi-IDE support.
 
 const path = require("path");
 const fs = require("fs");
 const { ensureDir, writeFileSafe } = require("./fs-utils");
-const { loadBaseTemplate, buildRuleTemplate } = require("./templates");
+const { buildRuleForIde, buildBaseRuleForIde, buildRuleContent } = require("./templates");
+const { getAdapter, slugify } = require("./ide-adapters");
+const { getOutputFileName, mergeRulesForSingleFile, formatCategoryRule } = require("./formatters");
 const { DEFAULT_LOCALE } = require("./options");
 
-function slugify(value) {
-  return value
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
-
+/**
+ * 解析目标目录路径
+ */
 function resolveTargetDir(cwd, ide) {
-  if (ide === "cursor") return path.join(cwd, ".cursor", "rules");
-  if (ide === "trae") return path.join(cwd, ".trae", "rules");
-  if (ide === "vscode") return path.join(cwd, ".vscode", "rules");
-  return path.join(cwd, `.${slugify(ide)}`, "rules");
+  const adapter = getAdapter(ide);
+  return path.join(cwd, adapter.rulesDir);
 }
 
+/**
+ * 加载项目记忆模板
+ */
 function loadProjectMemoryTemplate() {
   const templatePath = path.join(__dirname, "..", "templates", "project_memory_example.md");
   try {
@@ -29,51 +28,91 @@ function loadProjectMemoryTemplate() {
   }
 }
 
+/**
+ * 构建文件生成计划
+ */
 function buildPlans(messages, selections) {
   const { frontend = [], backend = [], language = [], ide } = selections;
-  const baseTemplate = applyIdePlaceholder(loadBaseTemplate(), ide);
+  const adapter = getAdapter(ide);
   const plans = [];
-  plans.push({
-    filename: "base.mdc",
-    content: baseTemplate
-  });
+
+  // 基础规则
+  const baseContent = buildBaseRuleForIde(ide);
+  const baseFileName = getOutputFileName(ide, "base");
+
+  // 分类规则
+  const categoryRules = [];
 
   frontend.forEach((name) => {
-    plans.push({
-      filename: `frontend-${slugify(name)}.mdc`,
-      content: buildRuleTemplate(messages, "frontend", name)
+    const content = buildRuleForIde(messages, "frontend", name, ide);
+    categoryRules.push({
+      filename: getOutputFileName(ide, `frontend-${slugify(name)}`),
+      content,
+      category: "frontend",
+      name
     });
   });
 
   backend.forEach((name) => {
-    plans.push({
-      filename: `backend-${slugify(name)}.mdc`,
-      content: buildRuleTemplate(messages, "backend", name)
+    const content = buildRuleForIde(messages, "backend", name, ide);
+    categoryRules.push({
+      filename: getOutputFileName(ide, `backend-${slugify(name)}`),
+      content,
+      category: "backend",
+      name
     });
   });
 
   language.forEach((name) => {
-    plans.push({
-      filename: `language-${slugify(name)}.mdc`,
-      content: buildRuleTemplate(messages, "language", name)
+    const content = buildRuleForIde(messages, "language", name, ide);
+    categoryRules.push({
+      filename: getOutputFileName(ide, `language-${slugify(name)}`),
+      content,
+      category: "language",
+      name
     });
   });
+
+  // 如果是单文件 IDE（如 Windsurf、Copilot），合并所有规则
+  if (adapter.singleFile) {
+    const allRules = [
+      { content: baseContent, category: "base", name: "base" },
+      ...categoryRules
+    ];
+    const mergedContent = mergeRulesForSingleFile(allRules, ide);
+    const fileName = adapter.fileName || baseFileName;
+    plans.push({
+      filename: fileName,
+      content: mergedContent
+    });
+  } else {
+    // 多文件 IDE，每个规则单独文件
+    plans.push({
+      filename: baseFileName,
+      content: baseContent
+    });
+    categoryRules.forEach((rule) => {
+      plans.push({
+        filename: rule.filename,
+        content: rule.content
+      });
+    });
+  }
 
   return plans;
 }
 
-function applyIdePlaceholder(template, ide) {
-  const ideSlug = slugify(ide || "cursor");
-  const rulesDir = `.${ideSlug}/rules`;
-  return template.replace(/__IDE_RULES_DIR__/g, rulesDir);
-}
-
+/**
+ * 写入生成计划到文件系统
+ */
 async function writePlans(targetDir, plans, force) {
   await ensureDir(targetDir);
   const summary = { written: [], skipped: [], backups: [] };
+
   for (const plan of plans) {
     const filePath = path.join(targetDir, plan.filename);
     const result = await writeFileSafe(filePath, plan.content, { force });
+
     if (result.skipped) {
       summary.skipped.push(filePath);
     } else {
@@ -81,24 +120,20 @@ async function writePlans(targetDir, plans, force) {
       if (result.backup) summary.backups.push(result.backup);
     }
   }
+
   return summary;
 }
 
-async function scaffold(cwd, messages, selections, opts = {}) {
-  const locale = selections.locale || DEFAULT_LOCALE;
-  const targetDir = resolveTargetDir(cwd, selections.ide);
-  const plans = buildPlans(messages, selections);
-  const summary = await writePlans(targetDir, plans, opts.force);
-  const memory = await writeProjectMemory(cwd, opts.force);
-  return { targetDir, locale, summary, memory };
-}
-
+/**
+ * 写入项目记忆文件
+ */
 async function writeProjectMemory(cwd, force) {
   const content = loadProjectMemoryTemplate();
   const dir = path.join(cwd, "docs");
   await ensureDir(dir);
   const filePath = path.join(dir, "project_memory.md");
   const result = await writeFileSafe(filePath, content, { force });
+
   return {
     filePath,
     skipped: result.skipped,
@@ -106,7 +141,22 @@ async function writeProjectMemory(cwd, force) {
   };
 }
 
+/**
+ * 主脚手架函数
+ */
+async function scaffold(cwd, messages, selections, opts = {}) {
+  const locale = selections.locale || DEFAULT_LOCALE;
+  const targetDir = resolveTargetDir(cwd, selections.ide);
+  const plans = buildPlans(messages, selections);
+  const summary = await writePlans(targetDir, plans, opts.force);
+  const memory = await writeProjectMemory(cwd, opts.force);
+
+  return { targetDir, locale, summary, memory };
+}
+
 module.exports = {
-  scaffold
+  scaffold,
+  resolveTargetDir,
+  buildPlans
 };
 

@@ -1,19 +1,27 @@
 {
   "name": "ide-rule",
-  "version": "1.0.4",
-  "description": "CLI to scaffold IDE rule templates (Cursor/TRAE/VSCode/custom) with multi-language support.",
+  "version": "1.1.0",
+  "description": "CLI to scaffold AI IDE rule templates with multi-IDE support (Cursor/Trae/Windsurf/Copilot/Lingma/CodeBuddy).",
   "main": "src/index.js",
   "bin": {
     "ide-rule": "bin/cli.js"
   },
   "scripts": {
     "start": "node bin/cli.js",
-    "test": "echo \"No automated tests yet\""
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "prepare": "husky"
   },
   "keywords": [
     "cursor",
+    "trae",
+    "windsurf",
+    "copilot",
+    "lingma",
+    "codebuddy",
+    "ai-ide",
     "rules",
-    "ide",
     "scaffold",
     "cli"
   ],
@@ -28,11 +36,13 @@
   "files": [
     "bin/",
     "src/",
+    "templates/base_rule_content.md",
     "templates/base_example.mdc",
     "templates/project_memory_example.md",
     "locales/",
     "types/",
-    "README.md"
+    "README.md",
+    "README-en.md"
   ],
   "author": "",
   "license": "ISC",
@@ -42,5 +52,9 @@
   },
   "engines": {
     "node": ">=14"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "jest": "^30.2.0"
   }
 }

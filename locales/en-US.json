@@ -20,9 +20,13 @@
   "promptForce": "Overwrite existing files (backup will be created)?",
   "cancelled": "Cancelled",
   "choices": {
-    "cursor": "Cursor",
-    "trae": "TRAE",
-    "vscode": "VS Code",
+    "cursor": "Cursor (.mdc)",
+    "trae": "Trae by ByteDance (.md)",
+    "windsurf": "Windsurf by Codeium (.windsurfrules)",
+    "copilot": "GitHub Copilot (.md)",
+    "lingma": "Lingma by Alibaba (.md)",
+    "codebuddy": "CodeBuddy by Tencent (.md)",
+    "vscode": "VS Code Generic (.md)",
     "custom": "Custom",
     "none": "None"
   },
@@ -64,4 +68,3 @@
   "summaryMemorySkipped": "Project memory exists, skipped",
   "summaryMemoryBackup": "Project memory backup"
 }
-

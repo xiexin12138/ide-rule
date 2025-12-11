@@ -1,6 +1,26 @@
 // Reason: Decoupled constants for selectable options and defaults.
 
-const IDE_CHOICES = ["cursor", "trae", "vscode", "custom"];
+/**
+ * 支持的 IDE 列表
+ * - cursor: Cursor IDE (.mdc 格式)
+ * - trae: Trae IDE by ByteDance (.md 格式)
+ * - windsurf: Windsurf by Codeium (.windsurfrules 单文件)
+ * - copilot: GitHub Copilot (.github/copilot-instructions.md)
+ * - lingma: 通义灵码 by Alibaba (.lingma/rules/*.md)
+ * - codebuddy: CodeBuddy by Tencent (.codebuddy/rules/*.md)
+ * - vscode: VS Code 通用 (.vscode/rules/*.md)
+ * - custom: 自定义 IDE
+ */
+const IDE_CHOICES = [
+  "cursor",
+  "trae",
+  "windsurf",
+  "copilot",
+  "lingma",
+  "codebuddy",
+  "vscode",
+  "custom"
+];
 
 const FRONTEND_CHOICES = [
   "react",
@@ -47,4 +67,3 @@ module.exports = {
   DEFAULT_LOCALE,
   SUPPORTED_LOCALES
 };
-
