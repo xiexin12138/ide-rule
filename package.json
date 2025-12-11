@@ -51,7 +51,7 @@
     "prompts": "^2.4.2"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "devDependencies": {
     "husky": "^9.1.7",

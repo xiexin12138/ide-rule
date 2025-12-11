@@ -2,7 +2,7 @@
 
 [![Tests](https://github.com/xiexin12138/ide-rule/actions/workflows/test.yml/badge.svg)](https://github.com/xiexin12138/ide-rule/actions/workflows/test.yml)
 [![npm version](https://img.shields.io/npm/v/ide-rule.svg)](https://www.npmjs.com/package/ide-rule)
-[![Node.js](https://img.shields.io/badge/node-%3E%3D14-brightgreen.svg)](https://nodejs.org/)
+[![Node.js](https://img.shields.io/badge/node-%3E%3D16-brightgreen.svg)](https://nodejs.org/)
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
 [English](./README-en.md) | 中文
@@ -31,7 +31,7 @@
 
 ## 环境要求
 
-- Node.js >= 14
+- Node.js >= 16
 - npm
 
 ## 安装与使用
