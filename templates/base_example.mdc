@@ -25,7 +25,7 @@ alwaysApply: true
 
 2.  **上下文同步**:
     - **记忆同步**: 读取 `docs/project_memory.md` 以获取项目背景和特例。
-    - **规则同步**: 扫描 `.cursor/rules/*.mdc` 以获取工程标准。
+    - **规则同步**: 扫描 `__IDE_RULES_DIR__/*.mdc` 以获取工程标准。
     - *注意*: 特定的 MDC 规则（例如 `frontend.mdc`）优先级高于本通用规则。
 
 # Meta: 自进化协议 (架构师模式) 🧬
@@ -38,10 +38,10 @@ alwaysApply: true
 
 **场景 B: 工程标准 / 代码风格**
 - *定义*: 应用于**未来代码**的通用规则（例如：“总是使用 Zod 进行验证”）。
-- *动作*: 提议在 `.cursor/rules/` 中创建或更新 `.mdc` 文件（**注意：避开 base.mdc**）。
+- *动作*: 提议在 `__IDE_RULES_DIR__/` 中创建或更新 `.mdc` 文件（**注意：避开 base.mdc**）。
 - *逻辑*:
   - 分类: 前端、后端、测试、运维等。
-  - 目标文件: 例如 `.cursor/rules/react-standards.mdc`。
+  - 目标文件: 例如 `__IDE_RULES_DIR__/react-standards.mdc`。
 
 # 代码输出强制协议 (关键) 🌟
 为了确保 Cursor 的 `Apply`（应用）功能正常工作，必须严格遵循**上下文锚点**协议。
