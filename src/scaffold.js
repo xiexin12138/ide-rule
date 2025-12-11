@@ -30,8 +30,8 @@ function loadProjectMemoryTemplate() {
 }
 
 function buildPlans(messages, selections) {
-  const { frontend = [], backend = [], language = [] } = selections;
-  const baseTemplate = loadBaseTemplate();
+  const { frontend = [], backend = [], language = [], ide } = selections;
+  const baseTemplate = applyIdePlaceholder(loadBaseTemplate(), ide);
   const plans = [];
   plans.push({
     filename: "base.mdc",
@@ -60,6 +60,12 @@ function buildPlans(messages, selections) {
   });
 
   return plans;
+}
+
+function applyIdePlaceholder(template, ide) {
+  const ideSlug = slugify(ide || "cursor");
+  const rulesDir = `.${ideSlug}/rules`;
+  return template.replace(/__IDE_RULES_DIR__/g, rulesDir);
 }
 
 async function writePlans(targetDir, plans, force) {
