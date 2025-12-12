@@ -1,7 +1,7 @@
 {
   "name": "ide-rule",
   "version": "1.1.1",
-  "description": "CLI to scaffold AI IDE rule templates with multi-IDE support (Cursor/Trae/Windsurf/Copilot/Lingma/CodeBuddy).",
+  "description": "AI-native CLI generator for IDE rules. Instantly scaffold .cursorrules, .windsurfrules, and configurations for GitHub Copilot, Cursor, Windsurf, Trae, Lingma, and CodeBuddy. The ultimate standardization tool for AI-assisted coding workflows.",
   "main": "src/index.js",
   "bin": {
     "ide-rule": "bin/cli.js"
@@ -15,16 +15,29 @@
   },
   "keywords": [
     "cursor",
+    "cursorrules",
+    "cursor-rules",
     "trae",
     "windsurf",
+    "windsurfrules",
     "copilot",
+    "github-copilot",
     "lingma",
     "codebuddy",
     "ai-ide",
+    "ai-coding",
     "rules",
     "scaffold",
+    "generator",
+    "boilerplate",
     "cli",
-    "ide-rule"
+    "ide-rule",
+    "prompt-engineering",
+    "llm",
+    "dev-tool",
+    "config-generator",
+    "automation",
+    "ai-assistant"
   ],
   "repository": {
     "type": "git",
@@ -41,7 +54,7 @@
     "locales/",
     "types/",
     "README.md",
-    "README-en.md"
+    "README-zh.md"
   ],
   "author": "",
   "license": "ISC",
