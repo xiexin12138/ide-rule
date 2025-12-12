@@ -1,6 +1,6 @@
 {
   "name": "ide-rule",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "CLI to scaffold AI IDE rule templates with multi-IDE support (Cursor/Trae/Windsurf/Copilot/Lingma/CodeBuddy).",
   "main": "src/index.js",
   "bin": {
@@ -23,7 +23,8 @@
     "ai-ide",
     "rules",
     "scaffold",
-    "cli"
+    "cli",
+    "ide-rule"
   ],
   "repository": {
     "type": "git",
@@ -36,9 +37,7 @@
   "files": [
     "bin/",
     "src/",
-    "templates/base_rule_content.md",
-    "templates/base_example.mdc",
-    "templates/project_memory_example.md",
+    "templates/",
     "locales/",
     "types/",
     "README.md",

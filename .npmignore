@@ -1,1 +1,34 @@
+# Dependencies
 node_modules/
+
+# Tests
+tests/
+coverage/
+jest.config.js
+
+# Git hooks
+.husky/
+
+# IDE & Editor
+.cursor/
+.vscode/
+*.swp
+*.swo
+
+# GitHub
+.github/
+
+# Documentation (keep README in package)
+docs/
+
+# Build artifacts
+*.tgz
+*.zip
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
