@@ -27,6 +27,8 @@
     "lingma": "Lingma by Alibaba (.md)",
     "codebuddy": "CodeBuddy by Tencent (.md)",
     "vscode": "VS Code Generic (.md)",
+    "claudecode": "Claude Code by Anthropic (CLAUDE.md)",
+    "gemini": "Gemini CLI by Google (GEMINI.md)",
     "custom": "Custom",
     "none": "None"
   },

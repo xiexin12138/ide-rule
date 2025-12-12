@@ -27,6 +27,8 @@
     "lingma": "通义灵码 (.md)",
     "codebuddy": "CodeBuddy 腾讯 (.md)",
     "vscode": "VS Code 通用 (.md)",
+    "claudecode": "Claude Code Anthropic (CLAUDE.md)",
+    "gemini": "Gemini CLI Google (GEMINI.md)",
     "custom": "自定义",
     "none": "无"
   },

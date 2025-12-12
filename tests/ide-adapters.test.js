@@ -9,7 +9,7 @@ const {
 
 describe("ide-adapters", () => {
   describe("IDE_ADAPTERS", () => {
-    const requiredIdes = ["cursor", "trae", "windsurf", "copilot", "lingma", "codebuddy", "vscode"];
+    const requiredIdes = ["cursor", "trae", "windsurf", "copilot", "lingma", "codebuddy", "vscode", "claudecode", "gemini"];
 
     test.each(requiredIdes)("should have adapter for %s", (ide) => {
       expect(IDE_ADAPTERS[ide]).toBeDefined();
@@ -34,9 +34,29 @@ describe("ide-adapters", () => {
       expect(cursor.frontmatterTemplate).toBeInstanceOf(Function);
     });
 
-    test("Windsurf and Copilot should be single-file IDEs", () => {
+    test("Windsurf, Copilot, ClaudeCode, and Gemini should be single-file IDEs", () => {
       expect(IDE_ADAPTERS.windsurf.singleFile).toBe(true);
       expect(IDE_ADAPTERS.copilot.singleFile).toBe(true);
+      expect(IDE_ADAPTERS.claudecode.singleFile).toBe(true);
+      expect(IDE_ADAPTERS.gemini.singleFile).toBe(true);
+    });
+
+    test("Claude Code should have correct configuration", () => {
+      const claudecode = IDE_ADAPTERS.claudecode;
+
+      expect(claudecode.name).toBe("Claude Code");
+      expect(claudecode.fileName).toBe("CLAUDE.md");
+      expect(claudecode.rulesDir).toBe(".");
+      expect(claudecode.headerTemplate).toBeInstanceOf(Function);
+    });
+
+    test("Gemini CLI should have correct configuration", () => {
+      const gemini = IDE_ADAPTERS.gemini;
+
+      expect(gemini.name).toBe("Gemini CLI");
+      expect(gemini.fileName).toBe("GEMINI.md");
+      expect(gemini.rulesDir).toBe(".");
+      expect(gemini.headerTemplate).toBeInstanceOf(Function);
     });
 
     test("Lingma should support globs via HTML comment", () => {
@@ -99,9 +119,15 @@ describe("ide-adapters", () => {
       expect(ides).toContain("vscode");
     });
 
-    test("should have at least 7 supported IDEs", () => {
+    test("should have at least 9 supported IDEs", () => {
       const ides = getSupportedIdes();
-      expect(ides.length).toBeGreaterThanOrEqual(7);
+      expect(ides.length).toBeGreaterThanOrEqual(9);
+    });
+
+    test("should include Claude Code and Gemini CLI", () => {
+      const ides = getSupportedIdes();
+      expect(ides).toContain("claudecode");
+      expect(ides).toContain("gemini");
     });
   });
 

@@ -49,6 +49,8 @@
 | **通义灵码** (阿里) | `.md` | `.lingma/rules/` | 支持 HTML 注释元数据 |
 | **CodeBuddy** (腾讯) | `.md` | `.codebuddy/rules/` | 标准 Markdown 格式 |
 | **VS Code** (通用) | `.md` | `.vscode/rules/` | 标准 Markdown 格式 |
+| **Claude Code** (Anthropic) | `CLAUDE.md` | 项目根目录 | 单文件项目指导 |
+| **Gemini CLI** (Google) | `GEMINI.md` | 项目根目录 | 单文件项目指导 |
 
 ---
 
@@ -133,6 +135,18 @@ alwaysApply: true
 └── copilot-instructions.md
 ```
 
+### Claude Code（单文件）
+
+```
+CLAUDE.md               # 项目根目录
+```
+
+### Gemini CLI（单文件）
+
+```
+GEMINI.md               # 项目根目录
+```
+
 ---
 
 ## 🛠️ 配置选项
@@ -148,6 +162,8 @@ alwaysApply: true
 | `lingma` | 通义灵码 (阿里) | `.md` |
 | `codebuddy` | CodeBuddy (腾讯) | `.md` |
 | `vscode` | VS Code 通用 | `.md` |
+| `claudecode` | Claude Code (Anthropic) | `CLAUDE.md` |
+| `gemini` | Gemini CLI (Google) | `GEMINI.md` |
 | `custom` | 自定义 IDE | 可配置 |
 
 ### 框架与语言模板
@@ -239,6 +255,8 @@ npm run test:coverage
 - [Cursor](https://cursor.sh) — AI 优先的代码编辑器
 - [Windsurf](https://codeium.com/windsurf) — Codeium 的 AI 代码编辑器
 - [GitHub Copilot](https://github.com/features/copilot) — AI 结对编程工具
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) — Anthropic 的智能编程工具
+- [Gemini CLI](https://github.com/google-gemini/gemini-cli) — Google 的 AI 命令行工具
 
 ---
 

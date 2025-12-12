@@ -49,6 +49,8 @@ Managing these configurations manually is tedious, error-prone, and wastes valua
 | **Lingma** (Alibaba) | `.md` | `.lingma/rules/` | HTML comment metadata support |
 | **CodeBuddy** (Tencent) | `.md` | `.codebuddy/rules/` | Standard Markdown format |
 | **VS Code** (Generic) | `.md` | `.vscode/rules/` | Standard Markdown format |
+| **Claude Code** (Anthropic) | `CLAUDE.md` | Project root | Single-file project guidance |
+| **Gemini CLI** (Google) | `GEMINI.md` | Project root | Single-file project guidance |
 
 ---
 
@@ -133,6 +135,18 @@ alwaysApply: true
 └── copilot-instructions.md
 ```
 
+### Claude Code (Single File)
+
+```
+CLAUDE.md               # Project root
+```
+
+### Gemini CLI (Single File)
+
+```
+GEMINI.md               # Project root
+```
+
 ---
 
 ## 🛠️ Configuration Options
@@ -148,6 +162,8 @@ alwaysApply: true
 | `lingma` | Lingma (Alibaba) | `.md` |
 | `codebuddy` | CodeBuddy (Tencent) | `.md` |
 | `vscode` | VS Code Generic | `.md` |
+| `claudecode` | Claude Code (Anthropic) | `CLAUDE.md` |
+| `gemini` | Gemini CLI (Google) | `GEMINI.md` |
 | `custom` | Custom IDE | Configurable |
 
 ### Framework & Language Templates
@@ -239,6 +255,8 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guidelines.
 - [Cursor](https://cursor.sh) — AI-first code editor
 - [Windsurf](https://codeium.com/windsurf) — AI code editor by Codeium
 - [GitHub Copilot](https://github.com/features/copilot) — AI pair programmer
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) — Anthropic's agentic coding tool
+- [Gemini CLI](https://github.com/google-gemini/gemini-cli) — Google's AI-powered CLI tool
 
 ---
 

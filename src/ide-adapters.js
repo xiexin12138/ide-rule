@@ -153,6 +153,54 @@ ${meta.description}
       __RULE_EXT__: ".md",
       __APPLY_FEATURE__: "代码建议"
     }
+  },
+
+  claudecode: {
+    name: "Claude Code",
+    rulesDir: ".", // 根目录
+    fileExt: ".md",
+    fileName: "CLAUDE.md", // 固定文件名
+    singleFile: true,
+    supportsFrontmatter: false,
+    supportsGlobs: false,
+    supportsAlwaysApply: false,
+    headerTemplate: (meta) => `# CLAUDE.md
+
+${meta.description}
+
+This file provides guidance to Claude Code when working with code in this repository.
+
+---
+`,
+    placeholders: {
+      __IDE_NAME__: "Claude Code",
+      __RULE_EXT__: ".md",
+      __APPLY_FEATURE__: "代码应用"
+    }
+  },
+
+  gemini: {
+    name: "Gemini CLI",
+    rulesDir: ".", // 根目录
+    fileExt: ".md",
+    fileName: "GEMINI.md", // 固定文件名
+    singleFile: true,
+    supportsFrontmatter: false,
+    supportsGlobs: false,
+    supportsAlwaysApply: false,
+    headerTemplate: (meta) => `# GEMINI.md
+
+${meta.description}
+
+This file provides guidance to Gemini CLI when working with code in this repository.
+
+---
+`,
+    placeholders: {
+      __IDE_NAME__: "Gemini CLI",
+      __RULE_EXT__: ".md",
+      __APPLY_FEATURE__: "代码应用"
+    }
   }
 };
 

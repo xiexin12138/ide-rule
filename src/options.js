@@ -19,6 +19,8 @@ const IDE_CHOICES = [
   "lingma",
   "codebuddy",
   "vscode",
+  "claudecode",
+  "gemini",
   "custom"
 ];
 
